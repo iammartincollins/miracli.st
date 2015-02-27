@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: FirstSite
+        psr4_prefix: FirstSite
+        src_path: app
