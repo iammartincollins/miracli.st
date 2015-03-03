@@ -15,8 +15,8 @@ Route::get('/', 'MlistController@index');
 Route::get('/api/list', 'MlistController@index');
 Route::get('/api/list/{id}', 'MlistController@show');
 Route::post('/api/list/create', 'MlistController@create');
-Route::put('/api/list/update/{id}', 'MlistController@update');
-Route::delete('/api/list/delete/{id}', 'MlistController@delete');
+Route::put('/api/list/{id}/update', 'MlistController@update');
+Route::delete('/api/list/{id}/delete', 'MlistController@delete');
 //
 // Route::get('home', 'HomeController@index');
 //

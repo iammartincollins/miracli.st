@@ -4,7 +4,8 @@ use FirstSite\Http\Requests;
 use FirstSite\Http\Controllers\Controller;
 use FirstSite\Mlist;
 
-use Illuminate\Http\Request;
+use Request;
+use Response;
 
 class MlistController extends Controller {
 
@@ -16,9 +17,9 @@ class MlistController extends Controller {
 	public function index()
 	{
 		$lists = MList::all();
-		// dd($lists);
 
-		return view('mlist.index')->with('lists', $lists);
+		return $lists;
+		// return view('mlist.index')->with('lists', $lists);
 	}
 
 	/**
@@ -28,9 +29,9 @@ class MlistController extends Controller {
 	 */
 	public function create()
 	{
-		//add new list to data
+		$list = Mlist::create(Request::all());
 
-		//return list ID?
+		return $list;
 	}
 
 	/**
@@ -43,7 +44,16 @@ class MlistController extends Controller {
 	{
 		$list = Mlist::find($id);
 
-		return view('Mlist/show')->with('list', $list);
+		if (is_null($list)) {
+			return Response::json(array(
+					'error' => 'List not found.',
+					'message' => 'The requested list was not found'
+				), 404
+			);
+		}
+
+		return $list;
+		// return view('Mlist/show')->with('list', $list);
 	}
 
 	/**
@@ -54,9 +64,21 @@ class MlistController extends Controller {
 	 */
 	public function update($id)
 	{
-		//fetch mlist
-		//if valid update
-		//return appropriate request code
+		if (! $list = Mlist::find($id)) {
+			return Response::json(array(
+					'error' => 'List not found.',
+					'message' => 'The requested list was not found'
+				), 404
+			);
+		}
+
+		$list->update(Request::all());
+
+		return Response::json(array(
+				'list' => $list,
+				'message' => 'List successfully updated.'
+			), 200
+		);
 	}
 
 	/**
@@ -67,7 +89,7 @@ class MlistController extends Controller {
 	 */
 	public function delete($id)
 	{
-		//
+		Mlist::destroy($id);
 	}
 
 }
