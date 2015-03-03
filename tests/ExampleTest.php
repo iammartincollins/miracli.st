@@ -10,7 +10,7 @@ class ExampleTest extends TestCase {
 	public function testBasicExample()
 	{
 		$response = $this->call('GET', '/');
-		dd($response->getContent());
+		// dd($response->getContent());
 
 		$this->assertEquals(200, $response->getStatusCode());
 	}
