@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'MlistController@index');
+Route::get('/', 'IndexController@index');
 Route::get('/api/list', 'MlistController@index');
 Route::get('/api/list/{id}', 'MlistController@show');
 Route::post('/api/list/create', 'MlistController@create');

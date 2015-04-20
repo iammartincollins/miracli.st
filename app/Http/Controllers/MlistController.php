@@ -42,7 +42,9 @@ class MlistController extends Controller {
 	 */
 	public function show($id)
 	{
-		$list = Mlist::find($id);
+		$list = Mlist::where('id', $id)
+						->with('ListItems')
+						->get();
 
 		if (is_null($list)) {
 			return Response::json(array(
