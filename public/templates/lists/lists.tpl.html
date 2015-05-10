@@ -1,0 +1,13 @@
+<h1 class="page-header">
+    My lists
+</h1>
+<div>
+    <ul class="list-unstyled">
+        <li ng-repeat="list in vm.lists">
+            <a ui-sref="list({ id: list.id })">
+                <h2>{{list.name}}</h2>
+                <p>{{list.description}}</p>
+            </a>
+        </li>
+    </ul>
+</div>

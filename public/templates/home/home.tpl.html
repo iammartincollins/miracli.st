@@ -1,0 +1,14 @@
+<h1 class="page-header">
+    home template!
+</h1>
+<div>
+    <ul class="list-unstyled">
+        <li ng-repeat="list in vm.lists">
+            <a ng-href="/list/{{list.id}}">
+                <h2>{{list.name}}</h2>
+                <p>{{list.description}}</p>
+            </a>
+        </li>
+        <!-- <li ng-repeat="list in vm.lists">{{list.name}}</li> -->
+    </ul>
+</div>

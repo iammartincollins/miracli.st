@@ -1,0 +1,9 @@
+<i ng-hide="vm.loaded" class="fa fa-refresh fa-5x fa-spin"></i>
+<h2>{{vm.list.name}}</h2>
+<p>{{vm.list.description}}</p>
+<ul class="list-unstyled">
+    <li ng-repeat="item in vm.list.list_items">
+        <h3>{{item.title}}</h3>
+        <p>{{item.body}}</p>
+    </li>
+</ul>
