@@ -19,9 +19,10 @@ angular.module('MListApp', [
     // 'MListApp.directives'
 ])
 
-.config(['$urlRouterProvider', '$httpProvider', function myAppConfig ($urlRouterProvider, $httpProvider) {
+.config(['$urlRouterProvider', '$httpProvider', '$locationProvider', function myAppConfig ($urlRouterProvider, $httpProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/home');
     $httpProvider.defaults.cache = true;
+    $locationProvider.html5Mode(true);
 }])
 
 .controller( 'AppCtrl', AppCtrl);

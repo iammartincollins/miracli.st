@@ -47,8 +47,8 @@
                 .catch(requestFailed);
 
             function requestComplete(response) {
-                console.log("Request for lists succeded");
-                // return response.data[0];
+                // console.log("Request for lists succeded");
+                return response.data;
             }
 
             function requestFailed(response) {

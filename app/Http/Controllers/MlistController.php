@@ -19,7 +19,6 @@ class MlistController extends Controller {
         $lists = MList::all();
 
         return $lists;
-        // return view('mlist.index')->with('lists', $lists);
     }
 
     /**

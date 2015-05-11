@@ -16,3 +16,5 @@ Route::group(['prefix' => 'api'], function() {
 |--------------------------------------------------------------------------
 */
 Route::get('/', 'IndexController@index');
+Route::any('/{catchall?}', 'IndexController@index');
+Route::any('/{catchall?}/{catchalll?}', 'IndexController@index');
