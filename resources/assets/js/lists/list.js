@@ -1,18 +1,27 @@
 (function() {
     "use strict";
 
-    ListCtrl.$inject = ['$scope', '$stateParams', 'Lists'];
+    ListCtrl.$inject = ['$scope', '$state','$stateParams', 'Lists'];
 
-    function ListCtrl ($scope, $stateParams, Lists) {
+    function ListCtrl ($scope, $state, $stateParams, Lists) {
         var vm = this;
-
         var id = $stateParams.id;
+        vm.remove = remove;
+
         vm.list = {};
         activate();
 
         function activate() {
             return getList().then(function() {
                 vm.loaded = true;
+            });
+        }
+
+        function remove() {
+            return removeList().then(function() {
+                $state.go('lists');
+                //update lists, or find a better way of managing i.e, polling, or a central place to store the list so it can be updated from anywhere
+                // such as a ListUi service e.g.: ListUi.remove(id) [viewmodel pattern]
             });
         }
 
@@ -24,6 +33,12 @@
                 });
         }
 
+        function removeList() {
+            return Lists.remove(id)
+                .then(function(data) {
+                    return data
+                });
+        }
     }
 
     function ListConfig($stateProvider) {

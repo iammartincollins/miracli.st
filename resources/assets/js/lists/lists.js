@@ -10,7 +10,7 @@
 
         function activate() {
             return getLists().then(function() {
-                console.log('Lists retrieved.');
+                vm.loaded = true;
             });
         }
 

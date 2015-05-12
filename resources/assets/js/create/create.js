@@ -19,7 +19,7 @@
             return Lists.create(vm.list)
                 .then(function(data) {
                     return data;
-                })
+            });
         }
     }
 

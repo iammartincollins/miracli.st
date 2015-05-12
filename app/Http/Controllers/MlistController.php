@@ -1,6 +1,5 @@
 <?php namespace FirstSite\Http\Controllers;
 
-// use FirstSite\Http\Requests;
 use FirstSite\Http\Controllers\Controller;
 use FirstSite\Mlist;
 
@@ -8,6 +7,9 @@ use Request;
 use Response;
 
 class MlistController extends Controller {
+    // @Todo: create a new response object with hasError property and errors array
+    // for every request, that returns an empty array when no error ans hasError
+    // will be false
 
     /**
      * Display a listing of the resource.
@@ -88,9 +90,24 @@ class MlistController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        Mlist::destroy($id);
+        $deleted = Mlist::destroy($id);
+
+        if ($deleted) {
+            return Response::json(array(
+                    'id' => $id,
+                    'message' => 'List successfully deleted.'
+                ), 200
+            );
+        }
+
+        return Response::json(array(
+                'id' => $id,
+                'error' => 'List not found.',
+                'message' => 'The requested list was not found'
+            ), 404
+        );
     }
 
 }

@@ -5,11 +5,6 @@
 
     function HomeCtrl ($scope, Lists) {
         var vm = this;
-        Lists.fetchAll()
-            .success(function(response) {
-                vm.lists = response;
-            });
-
     }
 
     function HomeConfig($stateProvider) {

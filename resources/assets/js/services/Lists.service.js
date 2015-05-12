@@ -5,7 +5,8 @@
         return {
             fetchAll: fetchAll,
             fetchOne: fetchOne,
-            create: create
+            create: create,
+            remove: remove
         };
 
         function fetchAll() {
@@ -53,6 +54,22 @@
 
             function requestFailed(response) {
                 console.log("Request for lists failed");
+            }
+        }
+
+        function remove(id) {
+            return $http.delete('/api/lists/' + id)
+                .then(requestComplete)
+                .catch(requestFailed);
+
+            function requestComplete(response) {
+                // console.log("Request for lists succeded");
+                console.log("requestComplete: ", response);
+                return response.data;
+            }
+
+            function requestFailed(response) {
+                console.log("Request for list with id: " + response.data.id + " failed");
             }
         }
 
