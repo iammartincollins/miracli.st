@@ -1,17 +1,21 @@
 (function() {
     "use strict";
 
-    CreateCtrl.$inject = ['$scope', '$state', 'Lists'];
+    CreateCtrl.$inject = ['$scope', '$state', 'Lists', 'ListsVM'];
 
-    function CreateCtrl ($scope, $state, Lists) {
+    function CreateCtrl ($scope, $state, Lists, ListsVM) {
         var vm = this;
         vm.list = {};
 
         vm.process = process;
 
         function process() {
-            return createList().then(function(data) {
-                $state.go('list', {'id': data.id });
+            return createList().then(function (data) {
+                ListsVM.update()
+                    .then(function () {
+                        $state.go('list', {'id': data.id });
+                    }
+                );
             });
         }
 

@@ -1,9 +1,9 @@
 (function() {
     "use strict";
 
-    ListCtrl.$inject = ['$scope', '$state','$stateParams', 'Lists'];
+    ListCtrl.$inject = ['$scope', '$state','$stateParams', 'Lists', 'ListsVM'];
 
-    function ListCtrl ($scope, $state, $stateParams, Lists) {
+    function ListCtrl ($scope, $state, $stateParams, Lists, ListsVM) {
         var vm = this;
         var id = $stateParams.id;
         vm.remove = remove;
@@ -19,9 +19,11 @@
 
         function remove() {
             return removeList().then(function() {
-                $state.go('lists');
-                //update lists, or find a better way of managing i.e, polling, or a central place to store the list so it can be updated from anywhere
-                // such as a ListUi service e.g.: ListUi.remove(id) [viewmodel pattern]
+                ListsVM.update()
+                    .then(function() {
+                        $state.go('lists');
+                    }
+                );
             });
         }
 

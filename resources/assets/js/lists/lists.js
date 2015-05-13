@@ -1,27 +1,14 @@
 (function() {
     "use strict";
 
-    ListsCtrl.$inject = ['$scope', 'Lists'];
+    ListsCtrl.$inject = ['$scope', 'Lists', 'ListsVM'];
 
-    function ListsCtrl ($scope, Lists) {
+    function ListsCtrl ($scope, Lists, ListsVM) {
         var vm = this;
-        vm.lists = {};
-        activate();
-
-        function activate() {
-            return getLists().then(function() {
-                vm.loaded = true;
-            });
-        }
-
-        function getLists() {
-            return Lists.fetchAll()
-                .then(function(data) {
-                    vm.lists = data;
-                    return vm.lists
-                });
-        }
-
+        vm.model = ListsVM;
+        vm.model.update().then(function() {
+            vm.loaded = true;
+        });
     }
 
     function ListsConfig($stateProvider) {
@@ -41,8 +28,7 @@
     }
 
     angular.module('MListApp.lists', [
-        'ui.router',
-        'MListApp.directives'
+        'ui.router'
     ])
     .config(ListsConfig)
     .controller('ListsCtrl', ListsCtrl);

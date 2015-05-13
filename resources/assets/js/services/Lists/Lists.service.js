@@ -10,9 +10,7 @@
         };
 
         function fetchAll() {
-            return $http.get('/api/lists', {
-                    cache: true
-                })
+            return $http.get('/api/lists')
                 .then(requestComplete)
                 .catch(requestFailed);
 
@@ -69,7 +67,7 @@
             }
 
             function requestFailed(response) {
-                console.log("Request for list with id: " + response.data.id + " failed");
+                console.error("Request for list with id: " + response.data.id + " failed");
             }
         }
 

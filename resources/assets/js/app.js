@@ -21,7 +21,7 @@ angular.module('MListApp', [
 
 .config(['$urlRouterProvider', '$httpProvider', '$locationProvider', function myAppConfig ($urlRouterProvider, $httpProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/home');
-    $httpProvider.defaults.cache = true;
+    // $httpProvider.defaults.cache = true;
     $locationProvider.html5Mode(true);
 }])
 
