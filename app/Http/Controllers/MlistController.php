@@ -30,6 +30,8 @@ class MlistController extends Controller {
      */
     public function store()
     {
+        dd(Request::all());
+        // @TODO: Set ListItems from request to create list items for the list, they currently go nowhere
         $list = Mlist::create(Request::all());
 
         return $list;

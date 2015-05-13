@@ -15,8 +15,7 @@ angular.module('MListApp', [
     'MListApp.home',
     'MListApp.lists',
     'MListApp.list',
-    'MListApp.create',
-    // 'MListApp.directives'
+    'MListApp.create'
 ])
 
 .config(['$urlRouterProvider', '$httpProvider', '$locationProvider', function myAppConfig ($urlRouterProvider, $httpProvider, $locationProvider) {

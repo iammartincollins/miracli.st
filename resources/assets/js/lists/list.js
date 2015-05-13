@@ -31,6 +31,7 @@
             return Lists.fetchOne(id)
                 .then(function(data) {
                     vm.list = data;
+                    console.log(vm.list);
                     return vm.list
                 });
         }
@@ -60,8 +61,7 @@
     }
 
     angular.module('MListApp.list', [
-        'ui.router',
-        'MListApp.directives'
+        'ui.router'
     ])
     .config(ListConfig)
     .controller('ListCtrl', ListCtrl);

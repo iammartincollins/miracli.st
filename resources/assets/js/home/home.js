@@ -24,8 +24,7 @@
     }
 
     angular.module('MListApp.home', [
-        'ui.router',
-        'MListApp.directives'
+        'ui.router'
     ])
     .config(HomeConfig)
     .controller('HomeCtrl', HomeCtrl);
