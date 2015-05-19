@@ -1,5 +1,5 @@
 <i ng-hide="vm.loaded" class="fa fa-refresh fa-5x fa-spin"></i>
-<section ng-show="vm.loaded">    
+<section ng-show="vm.loaded">
     <div class="row">
         <div class="btn-toolbar" role="toolbar" aria-label="list options">
             <div class="list-toolbar btn-group btn-group-sm col-md-12" role="group" aria-label="Primary list options">
@@ -16,8 +16,8 @@
         <div class="col-md-12">
             <p>{{vm.list.description}}</p>
             <ul class="list-unstyled">
-                <li ng-repeat="item in vm.list.list_items">
-                    <h3>{{item.title}}</h3>
+                <li ng-repeat="item in vm.list.list_items | orderBy:'order_num'">
+                    <h3>{{item.order_num}}. {{item.title}}</h3>
                     <p>{{item.body}}</p>
                 </li>
             </ul>
