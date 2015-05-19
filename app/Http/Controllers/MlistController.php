@@ -2,6 +2,7 @@
 
 use FirstSite\Http\Controllers\Controller;
 use FirstSite\Mlist;
+use FirstSite\ListItem;
 
 use Request;
 use Response;
@@ -30,9 +31,25 @@ class MlistController extends Controller {
      */
     public function store()
     {
-        dd(Request::all());
-        // @TODO: Set ListItems from request to create list items for the list, they currently go nowhere
-        $list = Mlist::create(Request::all());
+        $data = Request::all();
+        $items = $data['listItems'];
+        $listItems = Array();
+
+        $list = new Mlist;
+        $list->name = $data['name'];
+        $list->description = $data['description'];
+        $list->save();
+
+        foreach ($items as $item) {
+            $listItems[] = new ListItem([
+                'title' => $item['title'],
+                'body' => $item['body']
+                // 'mlist_id' => $list->id,
+                ]);
+        }
+
+        $list->listItems()->saveMany($listItems);
+        // $list->push();
 
         return $list;
     }

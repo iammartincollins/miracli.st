@@ -8,13 +8,13 @@
         vm.list = {
             name: "",
             description: "",
-            items: []
+            listItems: []
         };
 
         vm.process = process;
 
         vm.addItem = function () {
-            vm.list.items.push({
+            vm.list.listItems.push({
                 title: "",
                 body: ""
             });
