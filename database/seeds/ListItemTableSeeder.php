@@ -38,5 +38,40 @@ class ListItemTableSeeder extends Seeder {
         ]);
 
         //list 2
+        ListItem::create([
+            'mlist_id' => 2,
+            'order_num' => 2,
+            'title' => 'Welcome Home',
+            'body' => "https://www.youtube.com/watch?v=vGpbd6BUO0I"
+        ]);
+
+        ListItem::create([
+            'mlist_id' => 2,
+            'order_num' => 1,
+            'title' => 'A Favor House Atlantic',
+            'body' => "https://www.youtube.com/watch?v=pRWjLLpwnOM"
+        ]);
+
+        ListItem::create([
+            'mlist_id' => 2,
+            'order_num' => 3,
+            'title' => 'Evagria The Faithful',
+            'body' => "https://www.youtube.com/watch?v=siUaA8qxbS4"
+        ]);
+
+        ListItem::create([
+            'mlist_id' => 2,
+            'order_num' => 5,
+            'title' => 'Blood Red Summer',
+            'body' => "https://www.youtube.com/watch?v=XnABRPS37hk"
+        ]);
+
+        ListItem::create([
+            'mlist_id' => 2,
+            'order_num' => 4,
+            'title' => 'Wake Up',
+            'body' => "https://www.youtube.com/watch?v=ojasq626CgQ"
+        ]);
+
     }
 }

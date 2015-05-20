@@ -1,6 +1,6 @@
 <i ng-hide="vm.loaded" class="fa fa-refresh fa-5x fa-spin"></i>
-<section ng-show="vm.loaded">
-    <div class="row">
+<section class="list-view" ng-show="vm.loaded">
+    <!-- <div class="row">
         <div class="btn-toolbar" role="toolbar" aria-label="list options">
             <div class="list-toolbar btn-group btn-group-sm col-md-12" role="group" aria-label="Primary list options">
               <button type="button" class="btn btn-danger" ng-click="vm.remove()">Delete</button>
@@ -8,19 +8,20 @@
               <button type="button" class="btn btn-default">Option 3</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <h2>{{vm.list.name}}</h2>
+    <h2 class="list-header">{{vm.list.name}}</h2>
+    <p class="list-description">{{vm.list.description}}</p>
 
-    <div class="row">
-        <div class="col-md-12">
-            <p>{{vm.list.description}}</p>
-            <ul class="list-unstyled">
-                <li ng-repeat="item in vm.list.list_items | orderBy:'order_num'">
-                    <h3>{{item.order_num}}. {{item.title}}</h3>
-                    <p>{{item.body}}</p>
-                </li>
-            </ul>
+    <ul class="list-unstyled">
+        <div ng-repeat="item in vm.list.list_items | orderBy:'order_num'" class="list-item row">
+            <div class="col-md-1">
+                <span class="item-order-num">{{item.order_num}}.</span>
+            </div>
+            <div class="col-md-11 item-content-wrapper">
+                <h3 class="item-header">{{item.title}}</h3>
+                <p>{{item.body}}</p>
+            </div>
         </div>
-    </div>
+    </ul>
 </section>
