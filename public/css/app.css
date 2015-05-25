@@ -3338,8 +3338,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   margin-right: 5px;
 }
 body {
-  padding-top: 140px;
   overflow-y: scroll;
+}
+.single-nav-padding {
+  padding-top: 70px;
+}
+.double-nav-padding {
+  padding-top: 140px;
 }
 .list-view .list-header {
   font-size: 5em;

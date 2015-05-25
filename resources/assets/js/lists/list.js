@@ -49,13 +49,19 @@
             url: '/list/{id:int}',
             views: {
                 "main": {
-                  controller: 'ListCtrl',
-                  controllerAs: 'vm',
-                  templateUrl: 'templates/lists/list.tpl.html',
+                    controller: 'ListCtrl',
+                    controllerAs: 'vm',
+                    templateUrl: 'templates/lists/list.tpl.html',
+                },
+                "secondary-nav": {
+                    controller: 'ListCtrl',
+                    controllerAs: 'vm',
+                    templateUrl: 'templates/lists/list-nav.tpl.html',
                 }
             },
             data: {
-                pageTitle: 'List'
+                pageTitle: 'List',
+                bodyClass: 'double-nav-padding'
             }
         });
     }
