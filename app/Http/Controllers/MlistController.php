@@ -9,7 +9,7 @@ use Response;
 
 class MlistController extends Controller {
     // @Todo: create a new response object with hasError property and errors array
-    // for every request, that returns an empty array when no error ans hasError
+    // for every request, that returns an empty array when no error and hasError
     // will be false
 
     /**
@@ -42,14 +42,13 @@ class MlistController extends Controller {
 
         foreach ($items as $item) {
             $listItems[] = new ListItem([
+                'order_num' => $item['order_num'],
                 'title' => $item['title'],
                 'body' => $item['body']
-                // 'mlist_id' => $list->id,
                 ]);
         }
 
         $list->listItems()->saveMany($listItems);
-        // $list->push();
 
         return $list;
     }

@@ -5,23 +5,13 @@
 
     function CreateCtrl ($scope, $state, Lists, ListsVM) {
         var vm = this;
-        vm.list = {
-            name: "",
-            description: "",
-            listItems: []
-        };
+        vm.list = new List();
 
+        //================= Public methods
         vm.process = process;
 
-        vm.addItem = function () {
-            vm.list.listItems.push({
-                title: "",
-                body: ""
-            });
-        };
-
+        //================== Private methods
         function process() {
-            console.log("da list: ", vm.list);
             return createList().then(function (data) {
                 ListsVM.update()
                     .then(function () {

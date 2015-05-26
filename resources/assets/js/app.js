@@ -12,7 +12,6 @@
                 ? toState.data.bodyClass
                 : 'single-nav-padding'
             );
-            console.log(vm.bodyClass);
         });
     }
 

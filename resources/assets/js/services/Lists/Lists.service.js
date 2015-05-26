@@ -29,7 +29,6 @@
                 .catch(requestFailed);
 
             function requestComplete(response) {
-                console.log("incoming: ", response.data[0]);
                 return response.data[0];
             }
 
