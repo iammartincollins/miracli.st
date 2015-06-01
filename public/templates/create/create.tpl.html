@@ -1,6 +1,7 @@
 <h1 class="page-header">
     Create a list
 </h1>
+<p>Lets create a new list!</p>
 <div>
     <ul class="list-unstyled">
         <form>
@@ -8,13 +9,10 @@
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Name of your list" ng-model="vm.list.name">
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea rows="2" class="form-control" id="description" placeholder="What is your list about" ng-model="vm.list.description"></textarea>
-            </div>
 
-            <div m-list-items="" list="vm.list"></div>
-            <button ng-click="vm.process()" class="btn btn-primary">Submit</button>
+            <p>More options will go here.</p>
+
+            <button ng-click="vm.process()" class="btn btn-primary">Continue</button>
         </form>
     </ul>
 </div>

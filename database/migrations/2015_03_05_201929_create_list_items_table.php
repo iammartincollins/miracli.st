@@ -16,7 +16,7 @@ class CreateListItemsTable extends Migration {
         {
             $table->increments('id');
             $table->integer('mlist_id')->unsigned();
-            $table->smallInteger('order_num')->nullable();
+            $table->smallInteger('orderNum')->nullable();
             $table->string('title');
             $table->string('body');
             $table->timestamps();

@@ -29,7 +29,9 @@
                 .catch(requestFailed);
 
             function requestComplete(response) {
-                return response.data[0];
+
+                return mapList(response.data[0]);
+                // return response.data[0];
             }
 
             function requestFailed(response) {
@@ -71,6 +73,20 @@
             }
         }
 
+        function mapList(data) {
+            var list = new List(data);
+            list.createdAt = data.created_at;
+            list.updatedAt = data.updated_at;
+
+            for(var i = 0, l = data.list_items.length; i < l; i++) {
+                var itemData = data.list_items[i];
+                var item = new ListItem(itemData);
+                item.orderNum = itemData.order_num;
+                list.addItem(item);
+            }
+
+            return list;
+        };
     };
 
     angular.module('MListApp')

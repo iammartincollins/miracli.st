@@ -42,7 +42,7 @@ class MlistController extends Controller {
 
         foreach ($items as $item) {
             $listItems[] = new ListItem([
-                'order_num' => $item['order_num'],
+                'orderNum' => $item['orderNum'],
                 'title' => $item['title'],
                 'body' => $item['body']
                 ]);

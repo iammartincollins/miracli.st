@@ -1,0 +1,19 @@
+@list-item-bg-a: @bg-a;
+
+.list-view-edit {
+    .list-header,
+    .list-description {
+        width: 100%;
+    }
+}
+
+.list-item-edit {
+    .item-header,
+    .item-body {
+        width: 100%;
+    }
+
+    &:nth-child(even) {
+        background: lighten(@list-item-bg-a, 5%);
+    }
+}

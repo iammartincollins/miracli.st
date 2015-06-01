@@ -1,0 +1,37 @@
+<div class="form-group row">
+    <div class="col-md-12">
+        <button class="btn btn-default" ng-click="vm.addItem()">Add an item to your list <i class="fa fa-plus"></i></button>
+    </div>
+</div>
+
+<ul class="list-unstyled">
+    <li ng-repeat="item in vm.list.listItems | orderBy:'orderNum'" class="list-item list-item-edit row">
+        <div class="col-md-1">
+            <span class="item-order-num">{{item.orderNum}}.</span>
+        </div>
+        <div class="col-md-11 item-content-wrapper">
+            <input type="text" ng-model="item.title" class="item-header">
+            <textarea rows="2" ng-model="item.body" class="item-body"></textarea>
+        </div>
+    </li>
+</ul>
+<!--
+<div ng-repeat="item in vm.list.listItems | orderBy:'orderNum'">
+    <h3 class="create-list-item-header">List item {{item.orderNum}}</h3>
+
+    <div class="reorder-item-wrapper">
+        <i ng-if="!$first" ng-click="vm.moveUp(item)" class='btn btn-default fa fa-angle-up'></i>
+        <i ng-if="!$last" ng-click="vm.moveDown(item)" class='btn btn-default fa fa-angle-down'></i>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-12">
+            <input type="text" class="form-control" id="name" placeholder="Item title" ng-model="item.title">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            <textarea rows="2" class="form-control" id="description" placeholder="Item body" ng-model="item.body"></textarea>
+        </div>
+    </div>
+</div> -->

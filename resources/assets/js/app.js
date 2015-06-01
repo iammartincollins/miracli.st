@@ -3,6 +3,12 @@
 
     function AppCtrl ($scope, $location) {
         var vm = this;
+
+        // Route debugging
+        $scope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
+            console.log("State not found: ", unfoundState.to);
+        });
+
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
             if (angular.isDefined(toState.data.pageTitle)) {
                 vm.pageTitle = toState.data.pageTitle + ' | Miracli.st';
@@ -21,7 +27,8 @@
         'MListApp.home',
         'MListApp.lists',
         'MListApp.list',
-        'MListApp.create'
+        'MListApp.create',
+        'MListApp.edit'
     ])
 
     .config(['$urlRouterProvider', '$httpProvider', '$locationProvider', function myAppConfig ($urlRouterProvider, $httpProvider, $locationProvider) {

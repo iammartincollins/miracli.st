@@ -5,7 +5,21 @@
 
     function CreateCtrl ($scope, $state, Lists, ListsVM) {
         var vm = this;
-        vm.list = new List();
+
+        vm.list = new List({
+            "name": "",
+            "description": "This is a list we have created for you, to get help you on your way."
+        });
+        vm.list.addItem(new ListItem({
+            orderNum: 1,
+            title: "Example item 1",
+            body: "This is an example of an item you can add to your list."
+        }));
+        vm.list.addItem(new ListItem({
+            orderNum: 2,
+            title: "Example item 2",
+            body: "This is another example of an item you can add to your list."
+        }));
 
         //================= Public methods
         vm.process = process;
@@ -15,7 +29,7 @@
             return createList().then(function (data) {
                 ListsVM.update()
                     .then(function () {
-                        $state.go('list', {'id': data.id });
+                        $state.go('edit', {'id': data.id });
                     }
                 );
             });

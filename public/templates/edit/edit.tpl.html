@@ -1,0 +1,24 @@
+<!-- <h1 class="page-header">
+    Edit your list
+</h1> -->
+<section class="list-view list-view-edit" ng-show="vm.loaded">
+    <input ng-model="vm.list.name" class="list-header">
+    <textarea ng-model="vm.list.description" class="list-description"></textarea>
+
+    <div m-list-items="" list="vm.list"></div>
+    <!-- <ul class="list-unstyled">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name of your list" ng-model="vm.list.name">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea rows="2" class="form-control" id="description" placeholder="What is your list about" ng-model="vm.list.description"></textarea>
+            </div>
+
+            <div m-list-items="" list="vm.list"></div>
+            <button ng-click="vm.process()" class="btn btn-primary">Submit</button>
+        </form>
+    </ul> -->
+</section>
