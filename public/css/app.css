@@ -3383,10 +3383,13 @@ body {
 }
 .list-view-edit .list-header,
 .list-view-edit .list-description {
+  background: transparent;
   width: 100%;
 }
 .list-item-edit .item-header,
 .list-item-edit .item-body {
+  background: transparent;
+  border: 1px solid #333;
   width: 100%;
 }
 .list-item-edit:nth-child(even) {

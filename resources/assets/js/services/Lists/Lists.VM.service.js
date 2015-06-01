@@ -9,6 +9,7 @@
             return Lists.fetchAll()
                 .then(function(data) {
                     vm.lists = data;
+                    console.log(data);
                     return vm.lists;
                 }
             );

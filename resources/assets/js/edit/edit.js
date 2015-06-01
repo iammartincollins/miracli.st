@@ -27,6 +27,21 @@
             });
         }
 
+        function save(continue) {
+            // TODO: Add edit functionality
+            return updateList().then(function() {
+                ListsVM.update()
+                    .then(function() {
+                        if (continue) {
+                            // go to list
+                            $state.go('list'); //TODO: make work
+                        }
+                        //show confirmation notification and remain on page
+                    }
+                );
+            });
+        }
+
         function getList() {
             return Lists.fetchOne(id)
                 .then(function(data) {
@@ -52,10 +67,16 @@
                   controller: 'EditCtrl',
                   controllerAs: 'vm',
                   templateUrl: 'templates/edit/edit.tpl.html',
-                }
+              },
+              "secondary-nav": {
+                  controller: 'EditCtrl',
+                  controllerAs: 'vm',
+                  templateUrl: 'templates/edit/edit-list-nav.tpl.html',
+              }
             },
             data: {
-                pageTitle: 'Edit your list'
+                pageTitle: 'Edit your list',
+                bodyClass: 'double-nav-padding'
             }
         });
     }
