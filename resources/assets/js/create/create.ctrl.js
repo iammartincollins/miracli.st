@@ -1,9 +1,9 @@
 (function() {
     "use strict";
 
-    CreateCtrl.$inject = ['$state', 'Lists', 'ListsVM'];
+    CreateCtrl.$inject = ['$state', 'ListsService', 'ListsVM'];
 
-    function CreateCtrl ($state, Lists, ListsVM) {
+    function CreateCtrl ($state, ListsService, ListsVM) {
         var vm = this;
 
         vm.list = new List({
@@ -36,7 +36,7 @@
         }
 
         function createList() {
-            return Lists.create(vm.list)
+            return ListsService.create(vm.list)
                 .then(function(data) {
                     return data;
             });

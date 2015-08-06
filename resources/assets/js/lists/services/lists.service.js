@@ -10,6 +10,7 @@
         return {
             fetchAll: fetchAll,
             fetchOne: fetchOne,
+            update: update,
             create: create,
             remove: remove
         };
@@ -73,7 +74,7 @@
             }
         }
 
-        function update(data, id) {
+        function update(id, data) {
             return $http.put(
                     '/api/lists/' + id,
                     data
@@ -82,12 +83,11 @@
                 .catch(requestFailed);
 
             function requestComplete(response) {
-                console.log("update/put requestComplete: ", response);
                 return response.data;
             }
 
             function requestFailed(response) {
-                console.error("Update request for list with id: " + response.data.id + " failed", response);
+                console.error("Update request for list with id: " + data.id + " failed", response);
             }
         }
 

@@ -1,7 +1,8 @@
-<?php namespace FirstSite\Http\Controllers;
+<?php
+namespace FirstSite\Http\Controllers;
 
-use Request;
-use Response;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Response;
 use FirstSite\ListItem;
 use FirstSite\Mlist;
 
@@ -12,9 +13,7 @@ use FirstSite\Mlist;
  */
 class MlistController extends Controller
 {
-    // @Todo: create a new response object with hasError property and errors array
-    // for every request, that returns an empty array when no error and hasError
-    // will be false
+    // @Todo: create a new response object with hasError property and errors array for every request, that returns an empty array when no error and hasError will be false
 
     /**
      * Display a listing of the resource.
@@ -73,8 +72,7 @@ class MlistController extends Controller
             return Response::json(array(
                 'error' => 'List not found.',
                 'message' => 'The requested list was not found'
-            ), 404
-            );
+            ), 404);
         }
 
         return $list;
@@ -92,20 +90,32 @@ class MlistController extends Controller
             return Response::json(array(
                 'error' => 'List not found.',
                 'message' => 'The requested list was not found'
-            ), 404
-            );
+            ), 404);
         }
 
-        dd($list);
-        dd(Request::all());
+        $data = Request::all();
+        $items = $data['listItems'];
+        $listItems = Array();
 
-        // $list->update(Request::all());
-        //
-        // return Response::json(array(
-        //         'list' => $list,
-        //         'message' => 'List successfully updated.'
-        //     ), 200
-        // );
+        $list->name = $data['name'];
+        $list->description = $data['description'];
+        $list->save();
+
+        foreach ($items as $item) {
+            $listItems[] = new ListItem([
+                'order_num' => $item['orderNum'],
+                'title' => $item['title'],
+                'body' => $item['body']
+            ]);
+        }
+
+        $list->listItems()->saveMany($listItems);
+
+
+        return Response::json(array(
+            'data' => MList::all(),
+            'message' => 'List successfully updated.'
+        ), 200);
     }
 
     /**
@@ -123,16 +133,14 @@ class MlistController extends Controller
                 'id' => $id,
                 'data' => MList::all(),
                 'message' => 'List successfully deleted.'
-            ), 200
-            );
+            ), 200);
         }
 
         return Response::json(array(
             'id' => $id,
             'error' => 'List not found.',
             'message' => 'The requested list was not found'
-        ), 404
-        );
+        ), 404);
     }
 
 }
