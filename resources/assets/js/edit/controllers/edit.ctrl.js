@@ -8,8 +8,6 @@
         var id = $stateParams.id;
         vm.model = ListsVM.model;
         vm.remove = _remove;
-
-        vm.list = {};
         _activate();
 
         function _activate() {

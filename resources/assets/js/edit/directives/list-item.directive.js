@@ -2,8 +2,7 @@
     'use strict';
 
     function mListItems () {
-        var directive = {
-            // link: linkFunc,
+        return {
             controller: mListItemsCtrl,
             controllerAs: 'vm',
             bindToController: true,
@@ -13,10 +12,6 @@
                 list: '=list'
             }
         };
-        return directive;
-        //
-        // function linkFunc (scope, element, attrs) {
-        // };
     }
 
     mListItemsCtrl.$inject = ['$scope'];
@@ -25,8 +20,9 @@
         var vm = this;
 
         vm.addItem = function () {
+            var nextOrderNum = $scope.vm.list.getNextOrderNum();
             var item = new ListItem();
-            item.orderNum = $scope.vm.list.getNextOrderNum();
+            item.orderNum = nextOrderNum;
             vm.list.addItem(item);
         };
 
@@ -34,7 +30,7 @@
         //TODO: move validation to model?
             var otherItem = $scope.vm.list.getItemByOrderNum(item.orderNum - 1);
             if (otherItem) {
-                swapItems(item, otherItem);
+                swapItems(item, otherItem); //TODO: and move this to the list model, the directive should have no knowledge of swapping list's items around
             }
         };
 

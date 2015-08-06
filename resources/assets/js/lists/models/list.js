@@ -1,5 +1,4 @@
-function List (list)
-{
+function List(list) {
     list = (typeof list === 'undefined') ? {} : list;
     var _self = this;
 
@@ -28,10 +27,14 @@ function List (list)
 
     _self.getNextOrderNum = function () {
         var items = _self.listItems;
-        var max = Math.max.apply(Math, items.map(function(o){
-            return o.orderNum;
-        }));
+        var orderNum = 0;
 
-        return max + 1;
+        if (items.length) {
+            orderNum = Math.max.apply(Math, items.map(function (o) {
+                return o.orderNum;
+            }));
+        }
+
+        return orderNum + 1;
     };
 }

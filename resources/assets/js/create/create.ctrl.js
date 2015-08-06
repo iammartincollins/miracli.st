@@ -1,9 +1,9 @@
-(function() {
+(function () {
     "use strict";
 
     CreateCtrl.$inject = ['$state', 'ListsService', 'ListsVM'];
 
-    function CreateCtrl ($state, ListsService, ListsVM) {
+    function CreateCtrl($state, ListsService, ListsVM) {
         var vm = this;
 
         vm.list = new List({
@@ -26,23 +26,22 @@
 
         //================== Private methods
         function process() {
-            return createList().then(function (data) {
-                ListsVM.update()
-                    .then(function () {
-                        $state.go('edit', {'id': data.id });
-                    }
-                );
-            });
+            return createList()
+                .then(function (data) {
+                    ListsVM.setLists(data.lists);
+                    $state.go('edit', {'id': data.list.id});
+                }
+            );
         }
 
         function createList() {
             return ListsService.create(vm.list)
-                .then(function(data) {
-                    return data;
-            });
+                .then(function (data) {
+                    return data.data;
+                });
         }
     }
 
     angular.module('MListApp.create')
-    .controller('CreateCtrl', CreateCtrl);
+        .controller('CreateCtrl', CreateCtrl);
 }());

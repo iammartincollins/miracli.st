@@ -53,7 +53,13 @@ class MlistController extends Controller
 
         $list->listItems()->saveMany($listItems);
 
-        return $list;
+        return Response::json(array(
+            'data' => array(
+                'list' => $list,
+                'lists' =>MList::all()
+                ),
+            'message' => 'List successfully created.'
+        ), 200);
     }
 
     /**
