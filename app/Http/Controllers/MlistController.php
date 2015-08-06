@@ -100,7 +100,9 @@ class MlistController extends Controller
         $list->name = $data['name'];
         $list->description = $data['description'];
         $list->save();
-
+        $list->listItems->each(function ($itm) {
+            $itm->delete();
+        });
         foreach ($items as $item) {
             $listItems[] = new ListItem([
                 'order_num' => $item['orderNum'],
