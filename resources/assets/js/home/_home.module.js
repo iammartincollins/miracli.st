@@ -1,20 +1,14 @@
 (function() {
     "use strict";
 
-    HomeCtrl.$inject = ['$scope', 'Lists'];
-
-    function HomeCtrl ($scope, Lists) {
-        var vm = this;
-    }
-
     function HomeConfig($stateProvider) {
         $stateProvider.state('home', {
             url: '/home',
             views: {
                 "main": {
-                  controller: 'HomeCtrl',
-                  controllerAs: 'vm',
-                  templateUrl: 'templates/home/home.tpl.html',
+                    controller: 'HomeCtrl',
+                    controllerAs: 'vm',
+                    templateUrl: 'templates/home/home.tpl.html',
                 }
             },
             data: {
@@ -26,6 +20,5 @@
     angular.module('MListApp.home', [
         'ui.router'
     ])
-    .config(HomeConfig)
-    .controller('HomeCtrl', HomeCtrl);
+        .config(HomeConfig);
 }());
