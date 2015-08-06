@@ -34,7 +34,6 @@
                 .catch(requestFailed);
 
             function requestComplete(response) {
-
                 return mapList(response.data[0]);
             }
 
@@ -66,8 +65,6 @@
                 .catch(requestFailed);
 
             function requestComplete(response) {
-                // console.log("Request for lists succeded");
-                console.log("requestComplete: ", response);
                 return response.data;
             }
 

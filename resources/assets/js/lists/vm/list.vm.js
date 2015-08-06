@@ -12,7 +12,6 @@
 
         var _setList = function(list) {
             _model.list = list;
-            console.log("list!!!", list);
         };
 
         var _setLists = function(lists) {

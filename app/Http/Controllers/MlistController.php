@@ -121,6 +121,7 @@ class MlistController extends Controller
         if ($deleted) {
             return Response::json(array(
                 'id' => $id,
+                'data' => MList::all(),
                 'message' => 'List successfully deleted.'
             ), 200
             );
