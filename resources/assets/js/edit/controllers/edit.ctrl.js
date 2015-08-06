@@ -1,24 +1,26 @@
 (function () {
     "use strict";
 
-    EditCtrl.$inject = ['$scope', '$state', '$stateParams', 'Lists', 'ListsVM'];
+    EditCtrl.$inject = ['$state', '$stateParams', 'ListsService', 'ListsVM'];
 
-    function EditCtrl($scope, $state, $stateParams, Lists, ListsVM) {
+    function EditCtrl($state, $stateParams, ListsService, ListsVM) {
         var vm = this;
         var id = $stateParams.id;
-        vm.remove = remove;
-        vm.save = save;
+        vm.model = ListsVM.model;
+        vm.remove = _remove;
+        vm.save = _save;
 
         vm.list = {};
-        activate();
+        _activate();
 
-        function activate() {
-            return getList().then(function () {
+        function _activate() {
+            return getList().then(function (list) {
+                ListsVM.setList(list);
                 vm.loaded = true;
             });
         }
 
-        function remove() {
+        function _remove() {
             return removeList().then(function () {
                 ListsVM.update()
                     .then(function () {
@@ -28,7 +30,7 @@
             });
         }
 
-        function save(redirect) {
+        function _save(redirect) {
             return updateList().then(function () {
                 // NOTE: Controller is being called twice, so therefore there are two different values for vm.list - one
                 // in the normal ctrl and the other in the 'save' nav bar area so saving does nothing.
@@ -46,23 +48,21 @@
         }
 
         function getList() {
-            return Lists.fetchOne(id)
+            return ListsService.fetchOne(id)
                 .then(function (data) {
-                    console.log("edit ", data);
-                    vm.list = data;
-                    return vm.list
+                    return data
                 });
         }
 
         function removeList() {
-            return Lists.remove(id)
+            return ListsService._remove(id)
                 .then(function (data) {
                     return data
                 });
         }
 
         function updateList() {
-            return Lists.fetchOne(id)
+            return ListsService.fetchOne(id)
                 .then(function (data) {
                     console.log("update list: ", data);
                     return data;
