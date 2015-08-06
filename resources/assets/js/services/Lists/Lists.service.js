@@ -1,5 +1,10 @@
-    (function() {
+(function() {
     "use strict";
+
+    angular.module('MListApp')
+    .factory('ListsService', MLists);
+
+    MLists.$inject = ['$http'];
 
     function MLists ($http) {
         return {
@@ -19,7 +24,7 @@
             }
 
             function requestFailed(response) {
-                console.log("Request for lists failed");
+                console.log("Request for lists failed", response);
             }
         }
 
@@ -31,11 +36,10 @@
             function requestComplete(response) {
 
                 return mapList(response.data[0]);
-                // return response.data[0];
             }
 
             function requestFailed(response) {
-                console.log("Request for lists failed");
+                console.log("Request for list " + id + " failed", response);
             }
         }
 
@@ -48,12 +52,11 @@
                 .catch(requestFailed);
 
             function requestComplete(response) {
-                // console.log("Request for lists succeded");
                 return response.data;
             }
 
             function requestFailed(response) {
-                console.log("Request for lists failed");
+                console.log("Request to create a list failed", response);
             }
         }
 
@@ -69,10 +72,29 @@
             }
 
             function requestFailed(response) {
-                console.error("Request for list with id: " + response.data.id + " failed");
+                console.error("Request for list with id: " + response.data.id + " failed", response);
             }
         }
 
+        function update(data, id) {
+            return $http.put(
+                    '/api/lists/' + id,
+                    data
+                )
+                .then(requestComplete)
+                .catch(requestFailed);
+
+            function requestComplete(response) {
+                console.log("update/put requestComplete: ", response);
+                return response.data;
+            }
+
+            function requestFailed(response) {
+                console.error("Update request for list with id: " + response.data.id + " failed", response);
+            }
+        }
+
+        // Private methods
         function mapList(data) {
             var list = new List(data);
             list.createdAt = data.created_at;
@@ -89,7 +111,4 @@
         };
     };
 
-    angular.module('MListApp')
-    .factory('Lists', MLists);
-
-}());
+})();

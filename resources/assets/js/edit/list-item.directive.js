@@ -26,12 +26,12 @@
 
         vm.addItem = function () {
             var item = new ListItem();
-            console.log($scope.vm.list.getNextOrderNum());
             item.orderNum = $scope.vm.list.getNextOrderNum();
             vm.list.addItem(item);
         };
 
         vm.moveUp = function (item) {
+        //TODO: move validation to model?
             var otherItem = $scope.vm.list.getItemByOrderNum(item.orderNum - 1);
             if (otherItem) {
                 swapItems(item, otherItem);

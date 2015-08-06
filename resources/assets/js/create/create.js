@@ -1,14 +1,14 @@
 (function() {
     "use strict";
 
-    CreateCtrl.$inject = ['$scope', '$state', 'Lists', 'ListsVM'];
+    CreateCtrl.$inject = ['$state', 'Lists', 'ListsVM'];
 
-    function CreateCtrl ($scope, $state, Lists, ListsVM) {
+    function CreateCtrl ($state, Lists, ListsVM) {
         var vm = this;
 
         vm.list = new List({
             "name": "",
-            "description": "This is a list we have created for you, to get help you on your way."
+            "description": "This is a list we have created for you, to help you on your way."
         });
         vm.list.addItem(new ListItem({
             orderNum: 1,
@@ -50,7 +50,7 @@
                 "main": {
                   controller: 'CreateCtrl',
                   controllerAs: 'vm',
-                  templateUrl: 'templates/create/create.tpl.html',
+                  templateUrl: 'templates/create/create.tpl.html'
                 }
             },
             data: {
@@ -60,7 +60,7 @@
     }
 
     angular.module('MListApp.create', [
-        'ui.router',
+        'ui.router'
     ])
     .config(CreateConfig)
     .controller('CreateCtrl', CreateCtrl);

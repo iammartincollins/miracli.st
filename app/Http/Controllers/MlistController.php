@@ -1,13 +1,17 @@
 <?php namespace FirstSite\Http\Controllers;
 
-use FirstSite\Http\Controllers\Controller;
-use FirstSite\Mlist;
-use FirstSite\ListItem;
-
 use Request;
 use Response;
+use FirstSite\ListItem;
+use FirstSite\Mlist;
 
-class MlistController extends Controller {
+
+/**
+ * Class MlistController
+ * @package FirstSite\Http\Controllers
+ */
+class MlistController extends Controller
+{
     // @Todo: create a new response object with hasError property and errors array
     // for every request, that returns an empty array when no error and hasError
     // will be false
@@ -45,7 +49,7 @@ class MlistController extends Controller {
                 'order_num' => $item['orderNum'],
                 'title' => $item['title'],
                 'body' => $item['body']
-                ]);
+            ]);
         }
 
         $list->listItems()->saveMany($listItems);
@@ -56,56 +60,58 @@ class MlistController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
     {
         $list = Mlist::where('id', $id)
-                        ->with('ListItems')
-                        ->get();
+            ->with('ListItems')
+            ->get();
 
         if (is_null($list)) {
             return Response::json(array(
-                    'error' => 'List not found.',
-                    'message' => 'The requested list was not found'
-                ), 404
+                'error' => 'List not found.',
+                'message' => 'The requested list was not found'
+            ), 404
             );
         }
 
         return $list;
-        // return view('Mlist/show')->with('list', $list);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id)
     {
-        if (! $list = Mlist::find($id)) {
+        if (!$list = Mlist::find($id)) {
             return Response::json(array(
-                    'error' => 'List not found.',
-                    'message' => 'The requested list was not found'
-                ), 404
+                'error' => 'List not found.',
+                'message' => 'The requested list was not found'
+            ), 404
             );
         }
 
-        $list->update(Request::all());
+        dd($list);
+        dd(Request::all());
 
-        return Response::json(array(
-                'list' => $list,
-                'message' => 'List successfully updated.'
-            ), 200
-        );
+        // $list->update(Request::all());
+        //
+        // return Response::json(array(
+        //         'list' => $list,
+        //         'message' => 'List successfully updated.'
+        //     ), 200
+        // );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)
@@ -114,17 +120,17 @@ class MlistController extends Controller {
 
         if ($deleted) {
             return Response::json(array(
-                    'id' => $id,
-                    'message' => 'List successfully deleted.'
-                ), 200
+                'id' => $id,
+                'message' => 'List successfully deleted.'
+            ), 200
             );
         }
 
         return Response::json(array(
-                'id' => $id,
-                'error' => 'List not found.',
-                'message' => 'The requested list was not found'
-            ), 404
+            'id' => $id,
+            'error' => 'List not found.',
+            'message' => 'The requested list was not found'
+        ), 404
         );
     }
 

@@ -3384,12 +3384,13 @@ body {
 .list-view-edit .list-header,
 .list-view-edit .list-description {
   background: transparent;
+  border-style: dashed;
   width: 100%;
 }
 .list-item-edit .item-header,
 .list-item-edit .item-body {
   background: transparent;
-  border: 1px solid #333;
+  border: 1px dashed #333;
   width: 100%;
 }
 .list-item-edit:nth-child(even) {

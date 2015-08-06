@@ -1,0 +1,5 @@
+
+== Fix using list actions from multiple sources, possible fix:
+- Move actions (like list update, create, remove, etc) to commands.
+- Add edit-nav ctrl, wish fires off events
+- Add an event mediator that listens for these events and runs commands

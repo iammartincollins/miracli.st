@@ -12,7 +12,7 @@ function List (list)
 
     _self.addItem = function (item) {
         _self.listItems.push(item);
-    }
+    };
 
     _self.getItemByOrderNum = function (orderNum) {
         var items = _self.listItems;
@@ -24,7 +24,7 @@ function List (list)
         }
 
         return null;
-    }
+    };
 
     _self.getNextOrderNum = function () {
         var items = _self.listItems;
@@ -33,5 +33,5 @@ function List (list)
         }));
 
         return max + 1;
-    }
+    };
 }

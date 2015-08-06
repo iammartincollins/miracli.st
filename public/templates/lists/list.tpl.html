@@ -1,10 +1,10 @@
 <i ng-hide="vm.loaded" class="fa fa-refresh fa-5x fa-spin"></i>
 <section class="list-view" ng-show="vm.loaded">
-    <h2 class="list-header">{{vm.list.name}}</h2>
-    <p class="list-description">{{vm.list.description}}</p>
+    <h2 class="list-header">{{vm.model.list.name}}</h2>
+    <p class="list-description">{{vm.model.list.description}}</p>
 
     <ul class="list-unstyled">
-        <div ng-repeat="item in vm.list.listItems | orderBy:'orderNum'" class="list-item row">
+        <div ng-repeat="item in vm.model.list.listItems | orderBy:'orderNum'" class="list-item row">
             <div class="col-md-1">
                 <span class="item-order-num">{{item.orderNum}}.</span>
             </div>
