@@ -12,8 +12,13 @@ function List(list) {
 
     //= private methods
     var _addItem = function (item) {
-        item.orderNum = _self.getNextOrderNum();
         _self.listItems.push(item);
+    };
+
+    var _addNewItem = function (item) {
+        item = new ListItem(item);
+        item.orderNum = _self.getNextOrderNum();
+        _addItem(item);
     };
 
     var _getItemByOrderNum = function (orderNum) {
@@ -62,6 +67,7 @@ function List(list) {
 
     //= methods
     _self.addItem = _addItem;
+    _self.addNewItem = _addNewItem;
     _self.getItemByOrderNum = _getItemByOrderNum;
     _self.moveUp = _moveUp;
     _self.moveDown = _moveDown;

@@ -35,7 +35,8 @@
                 .catch(requestFailed);
 
             function requestComplete(response) {
-                return mapList(response.data[0]);
+                var list = mapList(response.data[0]);
+                return list;
             }
 
             function requestFailed(response) {
@@ -100,7 +101,6 @@
             for(var i = 0, l = data.list_items.length; i < l; i++) {
                 var itemData = data.list_items[i];
                 var item = new ListItem(itemData);
-                item.orderNum = itemData.order_num;
                 list.addItem(item);
             }
 

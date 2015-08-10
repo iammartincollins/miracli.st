@@ -10,16 +10,16 @@
             "name": "",
             "description": "This is a list we have created for you, to help you on your way."
         });
-        vm.list.addItem(new ListItem({
+        vm.list.addNewItem({
             orderNum: 1,
             title: "Example item 1",
             body: "This is an example of an item you can add to your list."
-        }));
-        vm.list.addItem(new ListItem({
+        });
+        vm.list.addNewItem({
             orderNum: 2,
             title: "Example item 2",
             body: "This is another example of an item you can add to your list."
-        }));
+        });
 
         //================= Public methods
         vm.process = process;

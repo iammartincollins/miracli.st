@@ -10,12 +10,13 @@
             <span class="item-order-num">{{item.orderNum}}.</span>
         </div>
         <div class="col-md-11 item-content-wrapper">
-            <div class="reorder-item-wrapper">
-                <i ng-if="!$first" ng-click="vm.moveUp(item)" class='btn btn-default fa fa-angle-up'></i>
-                <i ng-if="!$last" ng-click="vm.moveDown(item)" class='btn btn-default fa fa-angle-down'></i>
-            </div>
             <input type="text" ng-model="item.title" class="item-header">
             <textarea rows="2" ng-model="item.body" class="item-body"></textarea>
+            <div class="item-options-wrapper">
+                <i ng-if="!$first" ng-click="vm.moveUp(item)" class='btn btn-default fa fa-angle-up'></i>
+                <i ng-if="!$last" ng-click="vm.moveDown(item)" class='btn btn-default fa fa-angle-down'></i>
+                <i ng-click="vm.delete(item)" class='btn btn-danger fa fa-trash'></i>
+            </div>
         </div>
     </li>
 </ul>

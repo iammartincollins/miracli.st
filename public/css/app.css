@@ -3370,16 +3370,8 @@ body {
 .list-item:nth-child(even) {
   background: #f6f7f4;
 }
-.create-list-item-header,
-.reorder-item-wrapper {
+.create-list-item-header {
   display: inline-block;
-}
-.reorder-item-wrapper {
-  font-size: 1.5em;
-  margin-left: .5em;
-}
-.reorder-item-wrapper i {
-  padding: 0 5px;
 }
 .list-view-edit .list-header,
 .list-view-edit .list-description {
@@ -3395,6 +3387,18 @@ body {
 }
 .list-item-edit:nth-child(even) {
   background: #f6f7f4;
+}
+.item-options-wrapper {
+  display: inline-block;
+  font-size: 1.5em;
+}
+.item-options-wrapper i {
+  font-style: normal;
+  padding: 0 5px;
+}
+.item-options-wrapper i.fa-trash {
+  font-size: .8em;
+  padding: 2px 5px;
 }
 
 /*# sourceMappingURL=app.css.map */

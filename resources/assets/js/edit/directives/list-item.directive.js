@@ -18,19 +18,17 @@
 
     function mListItemsCtrl($scope) {
         var vm = this;
-        var selectedList = $scope.vm.list;
 
         vm.addItem = function () {
-            var item = new ListItem();
-            vm.list.addItem(item);
+            $scope.vm.list.addNewItem();
         };
 
         vm.moveUp = function(item) {
-            selectedList.moveUp(item);
+            $scope.vm.list.moveUp(item);
         };
 
         vm.moveDown = function(item) {
-            selectedList.moveDown(item);
+            $scope.vm.list.moveDown(item);
         };
     }
 
