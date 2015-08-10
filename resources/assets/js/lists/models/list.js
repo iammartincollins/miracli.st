@@ -17,7 +17,7 @@ function List(list) {
 
     var _addNewItem = function (item) {
         item = new ListItem(item);
-        item.orderNum = _self.getNextOrderNum();
+        item.orderNum = _getNextOrderNum();
         _addItem(item);
     };
 
@@ -68,9 +68,6 @@ function List(list) {
     //= methods
     _self.addItem = _addItem;
     _self.addNewItem = _addNewItem;
-    _self.getItemByOrderNum = _getItemByOrderNum;
     _self.moveUp = _moveUp;
     _self.moveDown = _moveDown;
-    _self.getNextOrderNum = _getNextOrderNum;
-
 }
