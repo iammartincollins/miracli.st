@@ -2,6 +2,7 @@
 == SOON ==
 * Add reordering items back in again (currently commented out in edit/list-items.tpl.html due to editing styling I believe) SEE: to-dos in the list-item.directive
 * Add delete item (if doesn't already exist and is commented out like above)
+* ADD TESTS (JS i.e., Karma, Jasmine) if logic exists yet
 * Maybe move second part of request chain on controllers active()->{{{getList()}}}, that interacts with http service to commands to avoid duplication/unnecessary code
 * Standardise response from PHP backend in the form of a shared response object (eg ListsResponse, ErrorResponse)
 * Notifications for frontend
