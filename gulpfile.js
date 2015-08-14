@@ -18,6 +18,7 @@ elixir(function(mix) {
         .scripts([
             '../vendor/bower_components/angular/angular.js',
             '../vendor/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-            'assets/js/**/*.js'
+            'assets/js/**/*.js',
+            'assets/js/**/!*.spec.js'
         ], 'public/js/app.min.js', 'resources');
 });

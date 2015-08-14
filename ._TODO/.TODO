@@ -1,7 +1,8 @@
 
 == SOON ==
-* Delete item added, but the remaining items' order numbers need to be updated appropriately
-* ADD TESTS (JS i.e., Karma, Jasmine) if logic exists yet
+* Abandon Elixir, try standard gulp or grunt
+* Move tests back into their modules, not separate folder (can't seem to exclude with Elixir)
+* Add more tests
 * Maybe move second part of request chain on controllers active()->{{{getList()}}}, that interacts with http service to commands to avoid duplication/unnecessary code
 * Standardise response from PHP backend in the form of a shared response object (eg ListsResponse, ErrorResponse)
 * Notifications for frontend

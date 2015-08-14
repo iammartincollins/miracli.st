@@ -14,8 +14,16 @@ function List(list) {
         _self.listItems.push(item);
     };
 
+    var _addNewItem = function (item) {
+        item = new ListItem(item);
+        item.orderNum = _getNextOrderNum();
+        _addItem(item);
+
+        return item;
+    };
+
     var _deleteItem = function (item) {
-        var index = _self.listItems.indexOf(item);
+        var index = _indexOfObject(_self.listItems, item);
         if (index != -1) {
             _self.listItems.splice(index, 1);
         }
@@ -27,12 +35,6 @@ function List(list) {
                 listItem.orderNum--;
             }
         }
-    };
-
-    var _addNewItem = function (item) {
-        item = new ListItem(item);
-        item.orderNum = _getNextOrderNum();
-        _addItem(item);
     };
 
     var _getItemByOrderNum = function (orderNum) {
@@ -78,6 +80,15 @@ function List(list) {
             _swapItems(item, otherItem);
         }
     };
+
+    var _indexOfObject = function (arr, o) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].x == o.x && arr[i].y == o.y) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     //= public methods
     this.addItem = _addItem;
