@@ -2,17 +2,31 @@ function List(list) {
     list = (typeof list === 'undefined') ? {} : list;
     var _self = this;
 
-    _self.id = list.id || "";
-    _self.createdAt = list.createdAt || "";
-    _self.updatedAt = list.updatedAt || "";
-    _self.name = list.name || "";
-    _self.description = list.description || "";
-    _self.listItems = list.listItems || [];
-
+    this.id = list.id || "";
+    this.createdAt = list.createdAt || "";
+    this.updatedAt = list.updatedAt || "";
+    this.name = list.name || "";
+    this.description = list.description || "";
+    this.listItems = list.listItems || [];
 
     //= private methods
     var _addItem = function (item) {
         _self.listItems.push(item);
+    };
+
+    var _deleteItem = function (item) {
+        var index = _self.listItems.indexOf(item);
+        if (index != -1) {
+            _self.listItems.splice(index, 1);
+        }
+
+        var removedOrderNum = item.orderNum;
+        for (var i = 0, l = _self.listItems.length; i < l; i++) {
+            var listItem = _self.listItems[i];
+            if (listItem.orderNum >= removedOrderNum) {
+                listItem.orderNum--;
+            }
+        }
     };
 
     var _addNewItem = function (item) {
@@ -65,9 +79,10 @@ function List(list) {
         }
     };
 
-    //= methods
-    _self.addItem = _addItem;
-    _self.addNewItem = _addNewItem;
-    _self.moveUp = _moveUp;
-    _self.moveDown = _moveDown;
+    //= public methods
+    this.addItem = _addItem;
+    this.addNewItem = _addNewItem;
+    this.deleteItem = _deleteItem;
+    this.moveUp = _moveUp;
+    this.moveDown = _moveDown;
 }

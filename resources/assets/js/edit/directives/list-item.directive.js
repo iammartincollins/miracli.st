@@ -23,6 +23,10 @@
             $scope.vm.list.addNewItem();
         };
 
+        vm.delete = function (item) {
+            $scope.vm.list.deleteItem(item);
+        };
+
         vm.moveUp = function(item) {
             $scope.vm.list.moveUp(item);
         };
