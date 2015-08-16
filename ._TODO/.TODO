@@ -9,3 +9,8 @@
 
 == AT SOME POINT ==
 * Rewrite creation/updating in PHP backend - currently messy and probably doesn't use Laravel/Eloquent well. Look into mapper objects or Fractal
+* Deployment
+
+
+== VISUAL ==
+* Switch from FontAwesome to better font library for interfaces (FA is overused) such as Themify icons
