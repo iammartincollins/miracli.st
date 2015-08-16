@@ -6,15 +6,24 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
 //header  = require('gulp-header'),
     rename = require('gulp-rename'),
-    minifyCSS = require('gulp-minify-css');
+    karma = require('gulp-karma'),
+    minifyCSS = require('gulp-minify-css'),
+    karmaConf = require('./karma.conf.js');
 //package = require('./package.json');
 
 var config = {
     js: {
+        fileName: 'app.js',
+        src: './resources/assets/js/**/*.js',
         dist: './public/js'
     },
     css: {
+        appSrc: './resources/assets/less/app.less',
+        src: './resources/assets/less/**/*.less',
         dist: './public/css'
+    },
+    vendor: {
+        src: './vendor/bower_components/**/*.min.js'
     }
 };
 
@@ -31,54 +40,69 @@ var config = {
 //].join('');
 
 
-
 //===== CSS
 
 var base_css = function () {
-    return gulp.src('./resources/assets/less/app.less')
+    return gulp.src(config.css.appSrc)
         .pipe(less({errLogToConsole: true}))
         .pipe(gulp.dest(config.css.dist))
 };
 
 gulp.task('css', function () {
-    base_css()
+    return base_css()
 });
 
 gulp.task('css-prod', function () {
-    base_css()
+    return base_css()
         .pipe(minifyCSS())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(config.css.dist));
 });
 
 
-
 //===== JAVASCRIPT
 
 var base_js = function () {
     return gulp.src([
-        './vendor/bower_components/**/*.min.js',
-        './resources/assets/js/**/*.js',
+        config.vendor.src,
+        config.js.src,
         '!./resources/assets/js/**/*.spec.js'
     ])
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
-        .pipe(concat('app.js'))
+        .pipe(concat(config.js.fileName))
         .pipe(gulp.dest(config.js.dist));
 };
 
 gulp.task('js', function () {
-    base_js();
+    return base_js();
 });
 
 gulp.task('js-prod', function () {
-    base_js()
+    return base_js()
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(config.js.dist));
 });
 
 
+//===== TESTS
+
+gulp.task('test', function () {
+    return gulp.src([
+        './resources/assets/tests/vendor/angular.min.js',
+        './resources/assets/tests/vendor/angular-ui-router.min.js',
+        './resources/assets/js/**/*.js',
+        './resources/assets/tests/**/*.spec.js'
+    ])
+        .pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'watch'
+        }))
+        .on('error', function (err) {
+            throw err;
+        });
+});
 
 
 //===== TASKS
@@ -86,8 +110,8 @@ gulp.task('js-prod', function () {
 gulp.task('default', ['css', 'js']);
 
 gulp.task('watch', ['css', 'js'], function () {
-    gulp.watch("resources/assets/less/**/*.less", ['css']);
-    gulp.watch("resources/assets/js/**/*.js", ['js']);
+    gulp.watch(config.css.src, ['css']);
+    gulp.watch(config.js.src, ['js']);
 });
 
 gulp.task('deploy', ['css-prod', 'js-prod']);
