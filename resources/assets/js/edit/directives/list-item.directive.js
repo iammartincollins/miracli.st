@@ -16,22 +16,21 @@
 
     mListItemsCtrl.$inject = ['$scope'];
 
+    /*jshint validthis: true */
     function mListItemsCtrl($scope) {
-        var vm = this;
-
-        vm.addItem = function () {
+        this.addItem = function () {
             $scope.vm.list.addNewItem();
         };
 
-        vm.delete = function (item) {
+        this.delete = function (item) {
             $scope.vm.list.deleteItem(item);
         };
 
-        vm.moveUp = function(item) {
+        this.moveUp = function(item) {
             $scope.vm.list.moveUp(item);
         };
 
-        vm.moveDown = function(item) {
+        this.moveDown = function(item) {
             $scope.vm.list.moveDown(item);
         };
     }

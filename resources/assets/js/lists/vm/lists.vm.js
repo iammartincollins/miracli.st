@@ -22,6 +22,6 @@
             model: _model,
             setList: _setList,
             setLists: _setLists
-        }
+        };
     }
 })();

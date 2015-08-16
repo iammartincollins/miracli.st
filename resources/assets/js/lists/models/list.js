@@ -81,14 +81,14 @@ function List(list) {
         }
     };
 
-    var _indexOfObject = function (arr, o) {
+    var _indexOfObject = function (arr, o) { //TODO move to utils file
         for (var i = 0; i < arr.length; i++) {
             if (arr[i].x == o.x && arr[i].y == o.y) {
                 return i;
             }
         }
         return -1;
-    }
+    };
 
     //= public methods
     this.addItem = _addItem;

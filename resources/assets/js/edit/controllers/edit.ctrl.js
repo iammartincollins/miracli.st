@@ -30,14 +30,14 @@
         function getList() {
             return ListsService.fetchOne(id)
                 .then(function (data) {
-                    return data
+                    return data;
                 });
         }
 
         function removeList() {
             return ListsService._remove(id)
                 .then(function (data) {
-                    return data
+                    return data;
                 });
         }
     }
