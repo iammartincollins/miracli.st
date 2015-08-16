@@ -68,14 +68,14 @@ function List(list) {
     };
 
     var _moveUp = function (item) {
-        var otherItem = _getItemByOrderNum(item.orderNum - 1);
+        var otherItem = _getItemByOrderNum(item.orderNum + 1);
         if (otherItem) {
             _swapItems(item, otherItem);
         }
     };
 
     var _moveDown = function (item) {
-        var otherItem = _getItemByOrderNum(item.orderNum + 1);
+        var otherItem = _getItemByOrderNum(item.orderNum - 1);
         if (otherItem) {
             _swapItems(item, otherItem);
         }

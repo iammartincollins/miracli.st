@@ -52,15 +52,15 @@ describe('List', function () {
 
     describe('When reordering listItems', function() {
         it('it should correctly swap order numbers', function() {
-            //TODO implement
-        });
-
-        it('it should not swap if first item in listItems', function() {
-            //TODO implement
-        });
-
-        it('it should not swap if last item in listItems', function() {
-            //TODO implement
+            var _list = new List();
+            var _item1 = new ListItem();
+            var _item2 = new ListItem();
+            var _item3 = new ListItem();
+            _list.addNewItem(_item1);
+            _list.addNewItem(_item2);
+            _list.addNewItem(_item3);
+            _list.moveUp(_list.listItems[0]);
+            expect(_list.listItems[0].orderNum).toBe(2);
         });
     });
 });
