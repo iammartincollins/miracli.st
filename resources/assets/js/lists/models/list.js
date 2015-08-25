@@ -23,7 +23,7 @@ function List(list) {
     };
 
     var _deleteItem = function (item) {
-        var index = _indexOfObject(_self.listItems, item);
+        var index = indexOfObjectByProp(_self.listItems, 'title', item);
         if (index != -1) {
             _self.listItems.splice(index, 1);
         }
@@ -79,15 +79,6 @@ function List(list) {
         if (otherItem) {
             _swapItems(item, otherItem);
         }
-    };
-
-    var _indexOfObject = function (arr, o) { //TODO move to utils file
-        for (var i = 0; i < arr.length; i++) {
-            if (arr[i].x == o.x && arr[i].y == o.y) {
-                return i;
-            }
-        }
-        return -1;
     };
 
     //= public methods

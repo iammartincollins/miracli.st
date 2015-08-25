@@ -421,11 +421,7 @@ e.$validators.maxlength=function(a,c){return 0>f||e.$isEmpty(c)||c.length<=f}}}}
 (function() {
     "use strict";
 
-    HomeCtrl.$inject = ['$scope', 'Lists'];
-
-    function HomeCtrl ($scope, Lists) {
-        var vm = this;
-    }
+    function HomeCtrl () {}
 
     angular.module('MListApp.home')
     .controller('HomeCtrl', HomeCtrl);
@@ -481,6 +477,47 @@ e.$validators.maxlength=function(a,c){return 0>f||e.$isEmpty(c)||c.length<=f}}}}
     ])
         .config(ListsConfig);
 })();
+(function () {
+    'use strict';
+
+    function mListItems() {
+        return {
+            controller: mListItemsCtrl,
+            controllerAs: 'vm',
+            bindToController: true,
+            templateUrl: 'templates/edit/list-items.tpl.html',
+            restrict: 'EA',
+            scope: {
+                list: '=list'
+            }
+        };
+    }
+
+    mListItemsCtrl.$inject = ['$scope'];
+
+    /*jshint validthis: true */
+    function mListItemsCtrl($scope) {
+        this.addItem = function () {
+            $scope.vm.list.addNewItem();
+        };
+
+        this.delete = function (item) {
+            $scope.vm.list.deleteItem(item);
+        };
+
+        this.moveUp = function(item) {
+            $scope.vm.list.moveUp(item);
+        };
+
+        this.moveDown = function(item) {
+            $scope.vm.list.moveDown(item);
+        };
+    }
+
+    angular.module('MListApp')
+        .directive('mListItems', mListItems);
+}());
+
 (function () {
     "use strict";
 
@@ -565,47 +602,6 @@ e.$validators.maxlength=function(a,c){return 0>f||e.$isEmpty(c)||c.length<=f}}}}
 
     angular.module('MListApp.edit')
         .controller('EditCtrl', EditCtrl);
-}());
-
-(function () {
-    'use strict';
-
-    function mListItems() {
-        return {
-            controller: mListItemsCtrl,
-            controllerAs: 'vm',
-            bindToController: true,
-            templateUrl: 'templates/edit/list-items.tpl.html',
-            restrict: 'EA',
-            scope: {
-                list: '=list'
-            }
-        };
-    }
-
-    mListItemsCtrl.$inject = ['$scope'];
-
-    /*jshint validthis: true */
-    function mListItemsCtrl($scope) {
-        this.addItem = function () {
-            $scope.vm.list.addNewItem();
-        };
-
-        this.delete = function (item) {
-            $scope.vm.list.deleteItem(item);
-        };
-
-        this.moveUp = function(item) {
-            $scope.vm.list.moveUp(item);
-        };
-
-        this.moveDown = function(item) {
-            $scope.vm.list.moveDown(item);
-        };
-    }
-
-    angular.module('MListApp')
-        .directive('mListItems', mListItems);
 }());
 
 (function () {

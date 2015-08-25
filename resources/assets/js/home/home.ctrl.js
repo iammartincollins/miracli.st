@@ -1,11 +1,7 @@
 (function() {
     "use strict";
 
-    HomeCtrl.$inject = ['$scope', 'Lists'];
-
-    function HomeCtrl ($scope, Lists) {
-        var vm = this;
-    }
+    function HomeCtrl () {}
 
     angular.module('MListApp.home')
     .controller('HomeCtrl', HomeCtrl);
